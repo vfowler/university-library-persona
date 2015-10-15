@@ -26,6 +26,7 @@ Using a persona helps:
 ----------
 ##How to use a persona
 When creating / editing content:
+
 1. Choose a persona **relevant to your content**.
 2. Familiarise yourself with the persona's: "quote", user stories, demographics, tech, motivations and frustrations.
 3. Write / edit content **targeted at this persona**.
