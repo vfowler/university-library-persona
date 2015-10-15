@@ -1,0 +1,408 @@
+/* order of modules approximates order of elements in HTML */
+body {
+	margin: 0;
+}
+noscript {
+	width: 32em;
+	margin: 0 auto;
+	display: block;
+	background-image: url(../img/icons/user.png);
+	background-repeat: repeat-x;
+	background-position: .25em .5em;
+	padding: 6em 3em;
+	background-color: silver;
+	box-shadow: 0 -5px 5px -4px inset;
+}
+#container, footer {
+	width: 830px;
+	margin: 0 auto;
+}
+header {
+	position: fixed;
+	z-index: 500;
+	top: 0;
+	margin: 0;
+	width: 830px;
+	background-color: #fff;
+	box-shadow: 0 0 10px 5px #fff;
+}
+.is-initial .breadcrumbs {
+	opacity: 0;
+}
+.breadcrumbs {
+	margin: 1.8em 0 0;
+	padding: .5em 0;
+	background-color: #fff;
+	width: 830px;
+}
+.breadcrumbs a {
+	text-decoration: none;
+}
+.breadcrumbs img {
+	vertical-align: middle;	
+}
+
+h1 img, h2 img { /* shouldn't need h2 img once headings bumped */
+	vertical-align: -10%;
+}
+
+nav#carousel {
+	width: 830px;
+	position: absolute;
+	top: 0;
+	z-index: 2000;
+	padding: 3px 0;
+	background-color: #fff;
+}
+
+.flexslider {
+	margin: 0;
+	clear: both;
+	-webkit-box-shadow: none; /* overrides flexslider.css  */
+	box-shadow: none; /* overrides flexslider.css  */
+	border: none;  /* overrides flexslider.css  */
+	border-radius: 0; /* overrides flexslider.css  */
+}
+.slides {
+	text-align: center;
+}
+#carousel .slides li img {
+	-webkit-filter: grayscale(50%); /*  blur(2px) really slows down performance */
+/*	-moz-filter: grayscale(100%); /* doesn't work in FF 31! */
+/*	-ms-filter: grayscale(100%); /* doesn't work in IE */
+/*	filter: grayscale(100%); /* invalid CSS */
+	opacity: .4;
+	border-bottom: 1px solid #fff;
+	box-sizing: border-box;
+
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+/* naming convention for state rules SMACSS p.25-27 */
+.is-initial #carousel .slides li img, #carousel .slides .inside img, #carousel .slides .flex-active-slide img, #carousel .slides a:focus img {
+	-webkit-filter: grayscale(0);
+/*	-moz-filter: grayscale(0);  /* doesn't work in FF 31! */
+/*	-ms-filter: grayscale(0); /* doesn't work in IE */
+/*	filter: grayscale(0); /* invalid CSS */
+	opacity: 1;
+	border-bottom-color: #fff;
+	box-shadow: 0px 0px 95px 0px #222;
+}
+#carousel .slides .flex-active-slide img, #carousel .slides a:focus img {
+	border-bottom-color: #222;
+}
+
+.flex-direction-nav a { /* over-rides flexslider.css */
+	text-shadow: 0 0 .5em #fff;
+	color: #000;
+}
+
+.thumb-overlay {
+	position: absolute;
+	bottom: 0;
+	width: 250px; /* MUST match px width of carousel thumbs in script */
+	display: block;
+	background-color: rgba(0,0,0,.5);
+	color: #fff;
+	opacity: 0.1;
+	box-shadow: 0 -1px 1px 0 rgba(0,0,0,.5);
+	-webkit-transition: all .6s ease-in-out;
+	-moz-transition: all .6s ease-in-out;
+	-ms-transition: all .6s ease-in-out;
+	transition: all .6s ease-in-out;
+}
+.inside .thumb-overlay, #carousel .slides a:focus .thumb-overlay, .flex-active-slide .thumb-overlay {
+	opacity: 1;
+}
+
+#nav-cue, #nav-keyboard {
+	opacity: 0;
+	position: absolute;
+	z-index: 100;
+	width: 20em;
+	left: 31%; /*(850px/2=425px=center, widthOfcue=336px/2=>168px, 425-168=257, 257/830 = 30.9%) */
+	top: -3.35em; /* final position 2.35em*/
+	padding: .5em;
+	border-radius: 1em;
+	box-shadow: 0 5px 10px -5px;
+}
+#nav-cue p, #nav-keyboard p {
+	margin-bottom: 0;
+}
+#nav-cue img, #nav-keyboard img {
+	vertical-align: middle;
+	width: 1em;
+}
+#kbd-msg-btn img {
+	padding: 0 1em;
+	cursor: pointer;
+}
+#nav-cue, #nav-keyboard, .user-stories-instructional, .user-stories .flexslider {
+	background-color: #FF9;
+	/* http://www.colorzilla.com/gradient-editor/#f1da36+0,fefcea+100;Custom */
+	background: linear-gradient(to bottom, rgba(241,218,54,1) 0%,rgba(254,252,234,1) 100%);
+	text-align: center;
+}
+.user-stories-instructional, .bio-instructional {
+	max-width: 28%;
+	box-sizing: border-box;
+	padding: 1em;
+	margin: .5em 0;
+	list-style-type: none;
+}
+.user-stories-instructional {
+	font-size: larger;
+	color: #000;
+}
+.bio-instructional {
+	border: 1px solid #aaa;
+}
+
+main {
+	position: relative;
+	opacity: 1;
+	margin-top: 150px; /* 155px is enough to clear the header */
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-ms-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+section {
+	border-radius: 2.5rem;
+	box-shadow: 0 9px 9px -7px;
+}
+#about {
+	margin: 9em 0 30em; /* NB The top 9em is required for IE. 
+	Managed to avoid needing an IE only stylesheet 
+	http://css-tricks.com/how-to-create-an-ie-only-stylesheet/
+	*/
+	padding: 0 5rem 2.5rem;
+}
+#about h2 {
+	cursor: pointer;
+	padding-left: 1em;
+	background-size: .75em;
+	background-image: url(../img/icons/plus.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	transition: background-image .6s ease-in-out;
+}
+#about h2.is-expanded {
+	background-image: url(../img/icons/minus.png);
+	background-repeat: no-repeat;
+}
+#about ul, #about ol {
+	margin-left: 2em;
+}
+#about a {
+	color: #666;
+}
+#about a:hover, #about a:focus {
+	color: #aaa;
+}
+.persona {
+	padding: 105px 0 2em; /* 160px 0 0 */
+	margin: 0 0 105px;
+	position: relative; /* must be relative so that the child elements (eg .quote) can be absolute */
+}
+/* http://www.colorzilla.com/gradient-editor/ AND http://css3generator.com/ */
+
+/* heading colours selected from each persona photo */
+#Angela h2, #Angela h3 {
+	color: rgb(224, 99, 67);
+}
+#Bruce h2, #Bruce h3 {
+	color: rgb(96, 85, 115);
+}
+#Diana h2, #Diana h3 {
+	color: rgb(227, 108, 172);
+}
+#Eric h2, #Eric h3 {
+	color: rgb(25, 84, 174);
+}
+#Jane h2, #Jane h3 {
+	color: rgb(82, 49, 42);
+}
+#Mike h2, #Mike h3 {
+	color: rgb(101, 81, 147);
+}
+.persona h2, .persona h3 {
+	text-shadow: 0px 1px 1px rgba(0,0,0,.9);
+}
+.persona h2, .quote {
+	position: absolute;
+	left: 4%;
+	top: 20%;
+	background-color: rgba(255,255,255,.65);
+	margin: 0;
+	box-sizing: border-box;
+	border-radius: 2rem 2rem 0 2rem;
+	z-index: 300;
+	padding: 1rem; /* rem units for consistent padding regardless of font-size and line-height differences */
+}
+.quote {
+	left: 65%;
+	width: 35%;
+	background-color: transparent;
+}
+.quote .btn {
+	position: absolute;
+	width: 40px; /*20px*/
+	height: 40px; /*20px*/
+	left: -24px;
+	top: -24px;
+	background-color: rgba(255,255,255,.75); /* .75 uncomment for final */
+	border-radius: 0 .5em; /* uncomment for final */
+	cursor: pointer;
+	background-image: url(../img/icons/plus.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	transition: background-image .6s ease-in-out;
+}
+.quote .btn.is-open {
+	background-image: url(../img/icons/minus.png);
+}
+
+.pq {
+	background-color: rgba(255,255,255,.85);
+	padding: 1rem 1rem 1rem 2rem;
+	border-radius: 0 2rem 2rem 2rem;
+	margin: 0;
+	box-shadow: 1px 1px 10px rgba(0,0,0,.5);
+	text-indent: -1em;
+	font-family: 'Permanent Marker', "Comic Sans MS", cursive;
+	font-size: large;
+}
+.pq::before, .pq::after {
+	font-size: 2.441em;
+	position: relative;
+	top: .4em;
+	left: -.25em;
+	line-height: 0;
+	color: rgba(0,0,0,.25); /* use same color as #trigger-nav-cue */
+}
+.pq::before {
+	content:"\201C";
+}
+.pq::after {
+	content:"\201D";
+	left: .25em;
+}
+.pq.pq-instructional {
+	width: 19%;
+	margin: .5em 0;
+	text-indent: 0;
+	list-style-type: none;
+}
+
+.fg-img {
+	max-width:100%; /* only need this if the script fails */
+	position: relative;
+	z-index: 200;
+}
+.bg-img {
+	height: 332px;
+	position: relative;
+	z-index: 200;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 105%; /* just large enough to hide the white frame around photos */
+	border: 1px solid rgba(255,255,255,.8);
+	border-width:0 3px;
+	
+	-webkit-transition: all .6s ease-in-out;
+	-moz-transition: all .6s ease-in-out;
+	-ms-transition: all .6s ease-in-out;
+	transition: all .6s ease-in-out;
+}
+
+/*  grid as per p.17 SMACSS didn't work :( */
+.l-grid {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.l-grid > li {
+	float: left;
+	width: 50%;
+	position: relative;
+	top: -2em;
+}
+/* grid-3 li have a width of 33% and are centered horizontally */
+.grid-3 > li {
+	width: 33%;
+	top: 0;
+	text-align: center;
+}
+.grid-3 > li, #home {
+	opacity: .5;
+	-webkit-transition: all .6s ease-in-out;
+	-moz-transition: all .6s ease-in-out;
+	-ms-transition: all .6s ease-in-out;
+	transition: all .6s ease-in-out;
+}
+.grid-3 > li:hover, #home:hover {
+	opacity: 1;
+}
+
+.user-stories, .research-expiry, .bio-details {
+	background-color: rgba(255,255,255,.5); /*.5 uncomment for final */ /* COLOUR FOR TESTING ONLY - DELETE THIS LATER */
+	padding: 0 2%;
+}
+.user-stories, .bio-details {
+	display: inline-block;
+	margin-top: 0;
+	margin-bottom: .5em;
+	width: 96%;
+}
+.user-stories h3, .bio-details h3 {
+	padding: 0 2.2rem; /* matches accordion CSS */
+}
+.user-stories .slides ol {
+	padding: 1.5em 3.5em 1em; /* leave enough space on left and right sides for the navigation arrows overlay */
+}
+.user-stories .slides ol li {
+	list-style: none;				
+/* 	line-height: 2.5; */
+	padding-bottom: 1.5em;
+	font-family: 'Permanent Marker', "Comic Sans MS", cursive; /* Google font + http://css-tricks.com/snippets/css/css-font-families/ fall backs */
+	font-size: larger;
+}
+.user-stories span {
+	color: #000; /* just to make it a tiny bit easier to read than rgb(34,34,34) #222 */
+}
+.bio-details h4 {
+	border-radius: 0; /* override jquery-ui.css */
+}
+.bio-details .ui-accordion .ui-accordion-content, .instructional {
+	font-family: 'Permanent Marker', "Comic Sans MS", cursive;
+}
+/* override jquery-ui.css */
+.ui-accordion .ui-accordion-header span.ui-accordion-header-icon {
+	background-size: cover;
+}
+.ui-accordion .ui-accordion-header span.ui-accordion-header-icon.plus-icon {
+	background-image: url(../img/icons/plus.png);
+}
+.ui-accordion .ui-accordion-header span.ui-accordion-header-icon.minus-icon {
+	background-image: url(../img/icons/minus.png);
+}
+
+.research-expiry {
+	clear: both; /* to be sure of clearing the l-grid above */
+	text-align: center;
+	margin: 0 1%; /* left and right to match .user-stories and .bio-details */
+	padding: .125em 0;
+}
+
+footer {
+	margin: 9em 0 -1em; /* negative bottom margin guarantees a vertical scroll bar appears consistently */
+	padding-bottom: 1em;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-ms-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
